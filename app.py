@@ -13,10 +13,6 @@ app.config['SQLAlchemy_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'sam'
 api = Api(app)
 
-@app.before_first_request
-def create_table():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth new end point
 
 api.add_resource(Store, '/store/<string:name>')
